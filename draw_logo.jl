@@ -12,6 +12,7 @@ green = Luxor.julia_green
 red = Luxor.julia_red
 purple = Luxor.julia_purple
 blue = Luxor.julia_blue
+colors = [green, red, purple, blue]
 
 function BF3_ish(filename)
     Drawing(500, 500, filename)
@@ -57,5 +58,51 @@ function H2O_ish(filename)
     preview()
 end
 
+function RW_water(filename)
+    Drawing(500, 500, filename)
+    origin()
+
+    # Background
+    setcolor(0.2, 0.2, 0.3)
+    squircle(O, 240, 240, rt=0.5, :fill)
+
+    # Some hot math
+    ang = pi*104.4/360
+    offset = Point(0,-50)
+    points = offset .+ 180 .*[Point(sin(ang), cos(ang)), Point(sin(-ang), cos(ang))]
+    Hcolor = [purple, green]
+    setline(13)
+
+    # Draw hydrogens
+    for i in eachindex(points)
+        point = points[i]
+        c = Hcolor[i]
+
+        # Bond
+        setcolor(blue)
+        setdash("dashed")
+        line(O+offset, point, :stroke)
+
+        # Interior H atom
+        setcolor(185/255, 183/255, 189/255)
+        circle(point, 45, :fill)
+
+        # Exterior H atom
+        setcolor(c)
+        setdash("solid")
+        circle(point, 45, :stroke)
+    end
+
+    # Draw oxygen
+    setcolor(red)
+    Oposition = O+offset
+    circle(Oposition, 90, :fill)
+
+    # Call it a day
+    finish()
+    preview()
+end
+
 BF3_ish("bf3_logo.png")
 H2O_ish("h2o_logo.png")
+RW_water("rw_logo.png")
