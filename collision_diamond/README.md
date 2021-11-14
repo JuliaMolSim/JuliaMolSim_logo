@@ -1,5 +1,6 @@
 
 
+# Logos for light backgrounds:
 
 <table bgcolor="white" width=100% align=center>
 <tr><td align=center height=250px>
@@ -13,16 +14,8 @@
 </td</tr>
 </table>
 
-<table bgcolor="black" width=100% align=center>
-<tr><td align=center height=250px>
-<img src="./horizontal_dark.svg">
-</td</tr>
-<tr><td align=center height=250px>
-<img src="./vertical_dark.svg">
-</td</tr>
-<tr><td align=center height=250px>
-<img src="./logo_dark.svg">
-</td</tr>
-</table>
+# Logos for dark backgrounds (sample image): 
+
+<img src="dark_sample.png">
 
 
